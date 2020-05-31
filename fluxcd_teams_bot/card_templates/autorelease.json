@@ -1,0 +1,42 @@
+{
+    "type": "AdaptiveCard",
+    "body": [
+        {
+            "type": "TextBlock",
+            "text": "FluxCD Autorelease",
+            "size": "Large",
+            "weight": "Bolder"
+        },
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "FactSet",
+                    "facts": [
+                        {
+                            "title": "Namespace",
+                            "value": "default"
+                        },
+                        {
+                            "title": "Resource",
+                            "value": "deployment/podinfo"
+                        },
+                        {
+                            "title": "Source Image",
+                            "value": "workloads/default/podinfo-dep.yaml"
+                        },
+                        {
+                            "title": "Destination Image",
+                            "value": "workloads/default/podinfo-dep.yaml"
+                        }
+
+                    ]
+                }
+            ],
+            "separator": true,
+            "style": "good"
+        }
+    ],
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.2"
+}
