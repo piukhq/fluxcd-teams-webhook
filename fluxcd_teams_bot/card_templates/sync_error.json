@@ -1,55 +1,23 @@
 {
-    "type": "AdaptiveCard",
-    "body": [
-        {
-            "type": "TextBlock",
-            "text": "FluxCD Deployment Error",
-            "size": "Large",
-            "weight": "Bolder"
-        },
-        {
-            "type": "Container",
-            "items": [
-                {
-                    "type": "FactSet",
-                    "facts": [
-                        {
-                            "title": "Namespace",
-                            "value": "default"
-                        },
-                        {
-                            "title": "Resource",
-                            "value": "deployment/podinfo"
-                        },
-                        {
-                            "title": "File",
-                            "value": "workloads/default/podinfo-dep.yaml"
-                        }
-                    ]
-                },
-                {
-                    "type": "TextBlock",
-                    "text": "Error:",
-                    "spacing": "None",
-                    "weight": "Bolder"
-                },
-                {
-                    "type": "TextBlock",
-                    "text": "running kubectl: error: error validating \\\"STDIN\\\": error validating data: ValidationError(Deployment.spec): unknown field \\\"sdsstrategy\\\" in io.k8s.api.apps.v1.DeploymentSpec; if you choose to ignore these errors, turn validation off with --validate=false",
-                    "wrap": true,
-                    "fontType": "Monospace",
-                    "spacing": "None"
-                },
-                {
-                    "type": "TextBlock",
-                    "text": "[File Link](URL)",
-                    "spacing": "Small"
-                }
-            ],
-            "separator": true,
-            "style": "warning"
-        }
-    ],
-    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
-    "version": "1.2"
+    "@type": "MessageCard",
+    "@context": "http://schema.org/extensions",
+    "themeColor": "d7000b",
+    "summary": "FluxCD Error",
+    "title": "FluxCD Error",
+    "sections": [{
+        "facts": [{
+            "name": "Namespace",
+            "value": ""
+        }, {
+            "name": "Resource",
+            "value": ""
+        }, {
+            "name": "File",
+            "value": ""
+        }],
+        "markdown": true
+    },
+    {
+    	"text": "Error:<br>```error```"
+    }]
 }
