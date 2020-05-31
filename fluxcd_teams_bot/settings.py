@@ -9,3 +9,5 @@ APP_ID = __getenv("APP_ID", "")
 APP_PASSWORD = __getenv("APP_PASSWORD", "")
 
 CARD_TEMPLATE_DIR = __path.join(__path.dirname(__file__), 'card_templates')
+
+FILE_STORAGE = __getenv('FILE_STORAGE', 'conv_file.db')
