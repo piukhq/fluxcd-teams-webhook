@@ -1,0 +1,22 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+aiohttp = "*"
+python-json-logger = "*"
+
+[dev-packages]
+black = "*"
+isort = {extras = ["pipfile_deprecated_finder"], version = "*"}
+mypy = "*"
+flake8 = "*"
+safety = "*"
+bandit = "*"
+
+[requires]
+python_version = "3.9"
+
+[pipenv]
+allow_prereleases = true
