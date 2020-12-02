@@ -4,7 +4,9 @@ TODO badges
 
 Simple Python web server which Flux v1 can send events to. Will send updates to an MS Teams webhook URL for any errors when applying GitOps manifests and when deployments are updated when new images are found.
 
-TODO docker uri
+```
+docker pull ghcr.io/binkhq/fluxcd-teams-webhook:latest
+```
 
 ## Setup
 
