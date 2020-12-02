@@ -45,17 +45,18 @@ http_logger.addHandler(http_handler)
 
 async def post_v6_events(request: web.Request) -> web.Response:
     # TODO check token
+    logger.debug(f"Got headers: {request.headers}")
 
     data = await request.json()
     logger.debug(f"Got v6_events request: {data}")
 
     # Parse through json object to see if its useful
     if result := parse(data):
-        async with aiohttp.ClientSession() as sesh:
+        async with aiohttp.ClientSession() as session:
             response = result.render()
             logger.info("Sending request to Teams")
             logger.debug(f"Request payload: {response}")
-            async with sesh.post(settings.TEAMS_WEBHOOK, json=response) as resp:
+            async with session.post(settings.TEAMS_WEBHOOK, json=response) as resp:
                 logger.debug(f"Webhook response code: {resp.status}")
 
     return web.Response(status=201)

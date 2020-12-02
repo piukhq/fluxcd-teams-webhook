@@ -1,0 +1,44 @@
+---
+
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  test:
+    name: Linting
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+          architecture: 'x64'
+      - name: Install Pipenv
+        run: pip install pipenv
+      - name: Install dev dependencies
+        run: pipenv install --dev
+      - name: Run linting
+        run: make
+      # - name: Validated Kuberentes deployment
+      #   uses: instrumenta/kubeval-action@master
+      #   with:
+      #     files: deployment.yaml
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout code 
+        uses: actions/checkout@v2
+      - name: Log into GHCR
+        run: echo "${{ secrets.GHCR_PAT }}" | docker login https://ghcr.io -u ${{ github.actor }} --password-stdin
+      - name: Build image
+        run: docker build -t ghcr.io/${{ github.repository }}/test .
+      - name: Push image
+        run: docker push -t ghcr.io/${{ github.repository }}/test
