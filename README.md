@@ -1,6 +1,6 @@
 # FluxCD Teams Webhook
 
-TODO badges
+![CI](https://github.com/binkhq/fluxcd-teams-webhook/workflows/CI/badge.svg)
 
 Simple Python web server which Flux v1 can send events to. Will send updates to an MS Teams webhook URL for any errors when applying GitOps manifests and when deployments are updated when new images are found.
 
