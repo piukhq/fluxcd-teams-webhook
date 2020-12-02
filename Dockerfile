@@ -13,4 +13,8 @@ COPY fluxcd_teams_bot /app/fluxcd_teams_bot/
 
 EXPOSE 8080
 
+LABEL org.opencontainers.image.source https://github.com/binkhq/fluxcd-teams-webhook
+LABEL org.opencontainers.image.licenses Apache-2.0
+Label org.opencontainers.image.title Flux v1 Teams Webhook
+
 CMD ["python3", "-m", "fluxcd_teams_bot.server"]
