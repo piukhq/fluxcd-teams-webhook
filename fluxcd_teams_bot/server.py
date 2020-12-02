@@ -44,7 +44,12 @@ http_logger.addHandler(http_handler)
 
 
 async def post_v6_events(request: web.Request) -> web.Response:
-    # TODO check token
+    auth_header = request.headers.get('Authorization', '')
+    if settings.FLUX_TOKEN and auth_header != f'Scope-Probe token={settings.FLUX_TOKEN}':
+        logger.warning('Got request with invalid auth token')
+        logger.debug(f'Invalid auth token "{auth_header}"')
+        return web.Response(status=401)
+
     logger.debug(f"Got headers: {request.headers}")
 
     data = await request.json()

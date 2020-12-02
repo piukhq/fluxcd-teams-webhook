@@ -21,6 +21,7 @@ The container has the following environment variables
 | `LISTEN_PORT`       | Web server listening port                                                              | `8080`                                                    |
 | `GIT_REPO_PREFIX`   | URL prefix used to generate links to the Git repo in Teams messages                    | `https://github.com/fluxcd/flux-get-started/blob/master/` |
 | `TEAMS_WEBHOOK_URL` | MS Teams webhook URL                                                                   |                                                           |
+| `FLUX_TOKEN`        | Flux auth token. Is optional                                                           |                                                           |
 
 Update the Flux container manifest to add the following args:
 
@@ -29,6 +30,5 @@ Update the Flux container manifest to add the following args:
 - --token=abc123abc123abc123abc123
 ```
 
-TODO token currently not checked
-
-The webhook url scheme should be `ws` if running the flux teams bot normally or `wss` if being fronted by SSL.
+The webhook url scheme should be `ws` if running the flux teams bot normally or `wss` if being fronted by SSL. 
+The token argument is optional, and if provided add the token environment variable to the flux teams webhook container.
